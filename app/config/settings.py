@@ -32,7 +32,8 @@ STATICFILES_DIRS = [
     STATIC_DIR
 ]
 
-
+                        # SECRET #
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 SECRETS_BASE = os.path.join(SECRETS_DIR, 'base.json')
 
@@ -48,16 +49,17 @@ secrets_base = json.loads(base_text)
 # secrets_base = json.loads(open(SECRETS_BASE, 'rt').read())
 
 # ./manage.py만 실행해도 하단의 print문의 출력결과를 확인 할 수 있음.
-print(secrets_base)
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+# print(secrets_base)
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = secrets_base['SECRET_KEY']
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets_base['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,6 +76,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Thirdparty App
+    'django_extensions',
+
+    # Custom App
+
 ]
 
 MIDDLEWARE = [
@@ -91,7 +99,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATES_DIR
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
