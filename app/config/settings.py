@@ -31,19 +31,21 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR
 ]
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
 
                         # SECRET #
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 SECRETS_BASE = os.path.join(SECRETS_DIR, 'base.json')
 
-# base.json 파일을 읽어온 결과
+# 1) base.json 파일을 읽어온 결과
 f = open(SECRETS_BASE, 'rt')
 base_text = f.read()
 f.close()
 
-# 위 결과(JSON형식의 문자열)를 파이썬 객체로 변환
+# 2) 위 결과(JSON형식의 문자열)를 파이선 객체로 변환
 secrets_base = json.loads(base_text)
+
 
 # 위의 두 단계를 한 줄로 축약
 # secrets_base = json.loads(open(SECRETS_BASE, 'rt').read())
