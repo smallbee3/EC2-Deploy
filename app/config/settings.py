@@ -21,17 +21,24 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
-# Static
-# User-uploaded file들이 저장될 위치
-MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
-MEDIA_URL = '/media/'
-
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
+
+# Media (User-uploaded files)
+# ec2-deploy/.media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
+
+
+
+# 'django/static' 폴더
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# Django에서 정적파일을 검색할 경로 목록
 STATICFILES_DIRS = [
     STATIC_DIR
 ]
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
 
                         # SECRET #
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -65,10 +72,14 @@ SECRET_KEY = secrets_base['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = [
+    'localhost',
     '.amazonaws.com',
+    '.dlighter.com',
 ]
+
 
 
 # Application definition
@@ -85,6 +96,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # Custom App
+    'photos',
 
 ]
 
@@ -169,4 +181,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
