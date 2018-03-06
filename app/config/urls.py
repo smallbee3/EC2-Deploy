@@ -18,19 +18,24 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path
 
-# from config.views import serve_media
+from config.views import serve_media
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('media/photo/<path>/', serve_media),
+
+    # *이렇게 <path>안에 /가 포함된 형태로는 사용할 수 없다.
+    # path('media/<path>', serve_media),
+
+    path('media/photo/<path>/', serve_media),
     # path('media/photo/<str:path>/', serve_media),
     # re_path(r'media/(?P<path>.*)/', serve_media),
 ]
 
-urlpatterns += static(
-    settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT,
-)
+# urlpatterns += static(
+#     settings.MEDIA_URL,
+#     document_root=settings.MEDIA_ROOT,
+# )
 
 
 # 잠깐 말씀드렸었는데 장고안에서 경로를 처리할 때는 유알엘 모듈에 의한 패턴에 의해서 어디로 갈지를 정하잖아요.
