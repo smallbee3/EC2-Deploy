@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 3/6 수업시간 추가
+export DJANGO_SETTINGS_MODULE=config.settings.dev
 
 # Nginx에 존재하던 모든 enabled서버 설정 링크 삭제
 sudo rm -rf /etc/nginx/sites-enabled/*
