@@ -62,8 +62,23 @@ secrets_base = json.loads(base_text)
 # ./manage.py만 실행해도 하단의 print문의 출력결과를 확인 할 수 있음.
 # print(secrets_base)
 
+# Django secret key
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secrets_base['SECRET_KEY']
+
+# AWS
+AWS_ACCESS_KEY_ID = secrets_base['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = secrets_base['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = secrets_base['AWS_STORAGE_BUCKET_NAME']
+
+# 3/6 during the class fixed by lhy
+AWS_S3_ENDPOINT_URL = 'https://s3.ap-northeast-2.amazonaws.com'
+AWS_DEFAULT_ACL = 'private'
+
+# 3/6 After the class fixed by lhy
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
@@ -73,7 +88,6 @@ SECRET_KEY = secrets_base['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
-
 
 
 # Application definition
@@ -89,6 +103,7 @@ INSTALLED_APPS = [
     # Thirdparty App
     'django_extensions',
     'raven.contrib.django.raven_compat',
+    'storages',
 
     # Custom App
     'photos',
@@ -125,7 +140,10 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+
+# 3/6 수업 중에 가장 이해하기 어려운 부분...
+# https://youtu.be/gnlIFQG22kI?t=5m52s
+# WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
