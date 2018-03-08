@@ -75,7 +75,7 @@ AWS_STORAGE_BUCKET_NAME = secrets_base['AWS_STORAGE_BUCKET_NAME']
 # AWS_S3_ENDPOINT_URL = 'https://s3.ap-northeast-2.amazonaws.com'
 
 # 파일의 읽기 권한을 없앰
-AWS_DEFAULT_ACL = 'private'
+# AWS_DEFAULT_ACL = 'private'
 
 # 3/7 질문답변 시간 설명 (signature version 4에서 바뀐것)
 # 3/6 After the class fixed by lhy
@@ -83,6 +83,20 @@ AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME = 'ap-northeast-2'
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+# AWS S3관련 설정
+DEFAULT_FILE_STORAGE = 'config.storages.MediaStorage'
+
+# Static files(collectstatic)를 위한 스토리지
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'config.storages.StaticStorage'
+
+
+MEDIAFILES_LOCATION = 'media'
+STATICFILES_LOCATION = 'static'
+
+
 
 
 # Quick-start development settings - unsuitable for production
