@@ -72,9 +72,12 @@ AWS_SECRET_ACCESS_KEY = secrets_base['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = secrets_base['AWS_STORAGE_BUCKET_NAME']
 
 # 3/6 during the class fixed by lhy
-AWS_S3_ENDPOINT_URL = 'https://s3.ap-northeast-2.amazonaws.com'
+# AWS_S3_ENDPOINT_URL = 'https://s3.ap-northeast-2.amazonaws.com'
+
+# 파일의 읽기 권한을 없앰
 AWS_DEFAULT_ACL = 'private'
 
+# 3/7 질문답변 시간 설명 (signature version 4에서 바뀐것)
 # 3/6 After the class fixed by lhy
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME = 'ap-northeast-2'
