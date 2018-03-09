@@ -73,9 +73,11 @@ AWS_STORAGE_BUCKET_NAME = secrets_base['AWS_STORAGE_BUCKET_NAME']
 
 # 3/6 during the class fixed by lhy
 # AWS_S3_ENDPOINT_URL = 'https://s3.ap-northeast-2.amazonaws.com'
+# -> 3/6일에는 있어야 작동했는데 3/8에는 그냥 작동해서 주석처리함.
+#    내 생각에는 없어도 될 것 같음. (지역이 노출되기 때문에)
 
 # 파일의 읽기 권한을 없앰
-# AWS_DEFAULT_ACL = 'private'
+AWS_DEFAULT_ACL = 'private'
 
 # 3/7 질문답변 시간 설명 (signature version 4에서 바뀐것)
 # 3/6 After the class fixed by lhy
